@@ -144,11 +144,145 @@ boolean has_dot;
         has_dot=false;
     }
 
+  /*  public void btn_delete(View view){
+        if(user_input.getText().equals("")){
+        user_input.setText(null);
+        }else{
+        int len=user_input.getText().length();
+        String s=user_input.getText().toString();
+            if(s.charAt (len-1)=="."){
+                has_dot=false;
+                user_input.setText(user_input.getText().subSequence(0,user_input.getText().length() - 1));
+            }else
+            {user_input.setText(user_input.getText().subSequence(0,user_input.getText().length() - 1)); }
+        }
+    }*/
+    public void btn_clear(View view){
+    user_input.setText(null);
+    sign_Box.setText(null);
+    val_1=null;
+    val_2=null;
+    sign=null;
+    has_dot=false;
+    }
+
+    public void btn_equal(View view){
+    if(sign==null){sign_Box.setText("Error!");}
+    else if (user_input.getText().equals("")){sign_Box.setText("Error!");}
+   /* else if ((sign.equals("+")) || (sign.equals("-")) || (sign.equals("X")) || (sign.equals("%")) && (val_1.equals("")))
+        {
+            sign_Box.setText("Error!");
+        }*/
+    else{
+        switch (sign){
+            default:
+                break;
+            case "log":
+                val_1=user_input.getText().toString();
+                num1=Double.parseDouble(val_1);
+                user_input.setText(Math.log10(num1)+"");
+                sign=null;
+                sign_Box.setText(null);
+                break;
+            case "ln":
+                val_1=user_input.getText().toString();
+                num1=Double.parseDouble(val_1);
+                user_input.setText(Math.log(num1)+ "");
+                sign=null;
+                sign_Box.setText(null);
+                break;
+            case "power":
+                val_1=user_input.getText().toString();
+                num1=Double.parseDouble(val_1);
+                user_input.setText(Math.pow(num1,num2)+ "");
+                sign=null;
+                sign_Box.setText(null);
+                break;
+            case "root":
+                val_1=user_input.getText().toString();
+                num1=Double.parseDouble(val_1);
+                user_input.setText(Math.sqrt(num1)+"");
+                sign=null;
+                sign_Box.setText(null);
+                break;
+            case "factorial":
+                val_1=user_input.getText().toString();
+                num1=Double.parseDouble(val_1);
+                int i=Integer.parseInt(val_1)-1;
+                while(i>0){
+                    num1=num1*i;
+                    i--;
+                }
+                user_input.setText(num1+"");
+                sign=null;
+                sign_Box.setText(null);
+                break;
+            case "sin":
+                val_1=user_input.getText().toString();
+                num1=Double.parseDouble(val_1);
+                user_input.setText(Math.sin(num1)+"");
+                sign=null;
+                sign_Box.setText(null);
+                break;
+            case "cos":
+                val_1=user_input.getText().toString();
+                num1=Double.parseDouble(val_1);
+                user_input.setText(Math.cos(num1)+"");
+                sign=null;
+                sign_Box.setText(null);
+                break;
+            case "tan":
+                val_1=user_input.getText().toString();
+                num1=Double.parseDouble(val_1);
+                user_input.setText(Math.tan(num1)+"");
+                sign=null;
+                sign_Box.setText(null);
+                break;
+            case "+":
+                val_2=user_input.getText().toString();
+                num1=Double.parseDouble(val_1);
+                num2=Double.parseDouble(val_2);
+                answer=num1+num2;
+                user_input.setText(answer+"");
+                sign=null;
+                sign_Box=null;
+                break;
+            case "-":
+                val_2=user_input.getText().toString();
+                num1=Double.parseDouble(val_1);
+                num2=Double.parseDouble(val_2);
+                answer=num1-num2;
+                user_input.setText(answer + "");
+                sign=null;
+                sign_Box=null;
+                break;
+            case "X":
+                val_2=user_input.getText().toString();
+                num1=Double.parseDouble(val_1);
+                num2=Double.parseDouble(val_2);
+                answer=num1*num2;
+                user_input.setText(answer + "");
+                sign=null;
+                sign_Box=null;
+                break;
+            case "%":
+                val_2=user_input.getText().toString();
+                num1=Double.parseDouble(val_1);
+                num2=Double.parseDouble(val_2);
+                answer=num1/num2;
+                user_input.setText(answer+"");
+                sign=null;
+                sign_Box=null;
+                break;
 
 
 
 
+        }
+    }
 
+
+    }
 
 
 }
